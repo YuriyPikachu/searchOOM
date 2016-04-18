@@ -1,0 +1,43 @@
+version rootProject.ext.VERSION_NAME
+group rootProject.ext.GROUP
+
+
+apply plugin: 'com.android.library'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+def gitSha() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+android {
+    resourcePrefix 'tatans_frame_'
+    compileOptions.encoding="GBK"
+    compileSdkVersion rootProject.ext.minSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        consumerProguardFiles 'consumer-proguard-rules.pro'
+    }
+    buildTypes{
+        debug{
+            buildConfigField "boolean", "LEO_DEBUG", "false"
+        }
+        release{
+            buildConfigField "boolean", "LEO_DEBUG", "true"
+        }
+    }
+}
+
+
+task sourceJar(type: Jar) {
+    from 'src/main/java'
+}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+apply from: rootProject.file('gradle/checkstyle.gradle')
+apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

@@ -1,4 +1,4 @@
-include ':SearchOOM-watcher'
+include ':SearchOOM-watcher', ':tatansframe'
 include ':SearchOOM-analyzer'
 include ':SearchOOM-android'
 include ':SearchOOM-no'

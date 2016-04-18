@@ -37,7 +37,7 @@ import static net.tatans.coeus.SearchOOM.internal.LeakCanaryInternals.SAMSUNG;
 
 /**
  * This class is a work in progress. You can help by reporting leak traces that seem to be caused
- * by the Android SDK, here: https://github.com/square/leakcanary/issues/new
+ * by the Android SDK, here:
  *
  * We filter on SDK versions and Manufacturers because many of those leaks are specific to a given
  * manufacturer implementation, they usually share their builds across multiple models, and the

@@ -17,17 +17,19 @@ package com.example.leakcanary;
 
 import android.app.Application;
 import android.os.StrictMode;
-import net.tatans.coeus.SearchOOM.LeakCanary;
+
+import net.tatans.coeus.SearchOOM.TatansSearchOOM;
+import net.tatans.coeus.network.tools.TatansApplication;
 
 import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.GINGERBREAD;
 
-public class ExampleApplication extends Application {
+public class ExampleApplication extends TatansApplication {
 
   @Override public void onCreate() {
     super.onCreate();
     enabledStrictMode();
-    LeakCanary.install(this);
+    TatansSearchOOM.install(this);
   }
 
   private void enabledStrictMode() {

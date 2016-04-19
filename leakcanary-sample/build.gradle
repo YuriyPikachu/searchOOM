@@ -2,7 +2,9 @@ apply plugin: 'com.android.application'
 
 dependencies {
   debugCompile project(':SearchOOM-android')
-  releaseCompile project(':SearchOOM-no');
+  releaseCompile project(':SearchOOM-no')
+  compile project(':coeus-network')
+  compile project(':mylibrary')
 }
 
 android {

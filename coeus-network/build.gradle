@@ -1,11 +1,25 @@
 version rootProject.ext.VERSION_NAME
 group rootProject.ext.GROUP
 
-
+buildscript {
+    repositories {
+        maven {
+            url TATANS_URL
+        }
+        // mavenCentral()
+    }
+}
+repositories {
+    maven {
+        url TATANS_URL
+    }
+    //mavenCentral()
+}
 apply plugin: 'com.android.library'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/Msc.jar')
 }
 
 def gitSha() {
@@ -13,7 +27,6 @@ def gitSha() {
 }
 
 android {
-    resourcePrefix 'tatans_frame_'
     compileOptions.encoding="GBK"
     compileSdkVersion rootProject.ext.minSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion

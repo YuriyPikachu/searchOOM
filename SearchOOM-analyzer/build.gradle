@@ -3,14 +3,20 @@ group rootProject.ext.GROUP
 
 buildscript {
   repositories {
-    mavenCentral()
+    maven {
+      url TATANS_URL
+    }
+  //  mavenCentral()
   }
 }
 
 apply plugin: 'com.android.library'
 
 repositories {
-  mavenCentral()
+  maven {
+    url TATANS_URL
+  }
+ // mavenCentral()
 }
 
 dependencies {

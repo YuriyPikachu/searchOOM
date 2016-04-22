@@ -66,7 +66,6 @@ public class TatansSpeaker {
 	private InitListener mTtsInitListener = new InitListener() {
 		@Override
 		public void onInit(int code) {
-			Log.e(TAG, "InitListener init() code = " + code);
 			if (code != ErrorCode.SUCCESS) {
 				Log.e(TAG, "初始化失败,错误码："+code);
         	} else {
@@ -224,9 +223,8 @@ public class TatansSpeaker {
 		mTts.resumeSpeaking();
 	}
 	public void speed(int speed){
-		Log.d(TAG, "speed:"+mTts.getParameter(SpeechConstant.SPEED));
+		Log.d(TAG, "现在语速:"+mTts.getParameter(SpeechConstant.SPEED));
 		mTts.setParameter(SpeechConstant.SPEED,String.valueOf(speed));
-		Log.d(TAG, "speed:"+mTts.getParameter(SpeechConstant.SPEED));
 	}
 	public void destroy(int speed){
 		mTts.destroy();

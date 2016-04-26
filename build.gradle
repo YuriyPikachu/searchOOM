@@ -32,7 +32,7 @@ ext {
   javaVersion = JavaVersion.VERSION_1_7
 
   GROUP = 'net.tatans.coeus'
-  VERSION_NAME = "7.0.0-SNAPSHOT"
+  VERSION_NAME = "5.4.0-SNAPSHOT"
   POM_PACKAGING = "pom"
   POM_DESCRIPTION= "SearchOOM"
 

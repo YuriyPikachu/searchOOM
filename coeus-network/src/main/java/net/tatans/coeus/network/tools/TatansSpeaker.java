@@ -111,7 +111,7 @@ public class TatansSpeaker {
 			// 播放进度
 			mPercentForPlaying = percent;
 			Log.d(TAG,"SpeakPro缓冲进度为"+mPercentForBuffering+"，播放进度为"+mPercentForPlaying);
-			Log.d(TAG,"beginPos:"+beginPos+"，播放进度为"+endPos);
+			Log.d(TAG,"开始节点:"+beginPos+"，结束节点:"+endPos);
 			mSpeakerCallback.onSpeakProgress(percent, beginPos, endPos);
 		}
 
@@ -226,7 +226,7 @@ public class TatansSpeaker {
 		Log.d(TAG, "现在语速:"+mTts.getParameter(SpeechConstant.SPEED));
 		mTts.setParameter(SpeechConstant.SPEED,String.valueOf(speed));
 	}
-	public void destroy(int speed){
+	public void destroy(){
 		mTts.destroy();
 	}
 }

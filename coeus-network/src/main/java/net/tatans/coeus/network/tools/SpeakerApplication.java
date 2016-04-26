@@ -13,7 +13,10 @@ class SpeakerApplication extends Application{
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		mSpeaker = TatansSpeaker.getInstance(this);
+	}
+
+	public static void setAppSpeaker() {
+		mSpeaker = TatansSpeaker.create();
 	}
 
 	public static void speech(String string){

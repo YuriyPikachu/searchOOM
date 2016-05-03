@@ -15,6 +15,13 @@ class SpeakerApplication extends Application{
 		super.onCreate();
 	}
 
+	@Override
+	public void onTrimMemory(int level) {
+		super.onTrimMemory(level);
+		if (mSpeaker!=null)
+			mSpeaker.stop();
+	}
+
 	public static void setAppSpeaker() {
 		mSpeaker = TatansSpeaker.create();
 	}
@@ -43,5 +50,16 @@ class SpeakerApplication extends Application{
 	public static void speed(int speed){
 		mSpeaker.speed(speed);
 	}
-
+	public static boolean isStop(){
+		return mSpeaker.isStop();
+	}
+	public static boolean isPause(){
+		return mSpeaker.isPause();
+	}
+	public static void destroy(){
+		 mSpeaker.destroy();
+	}
+	public static void setAudioFoucus(Boolean flag){
+		mSpeaker.setAudioFoucus(flag);
+	}
 }

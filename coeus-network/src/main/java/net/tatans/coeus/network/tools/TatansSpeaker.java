@@ -14,7 +14,9 @@ import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.SynthesizerListener;
 
 public class TatansSpeaker {
-	private static String TAG = TatansSpeaker.class.getSimpleName(); 	
+	private static String TAG = TatansSpeaker.class.getSimpleName();
+	private static Boolean bIsPause ;
+	private static Boolean bIsAudioFocus ;
 	private TatansSpeakerCallback mSpeakerCallback;
 	// 语音合成对象
 	private SpeechSynthesizer mTts;
@@ -28,11 +30,11 @@ public class TatansSpeaker {
 	private static final String PREFER_NAME = "com.iflytek.setting";
 	// 语记安装助手类
 	//ApkInstaller mInstaller ;
-	
+
 	private static TatansSpeaker instance = null;
 	/**
 	 * 单例模式
-	 * 
+	 *
 	 */
 	protected static TatansSpeaker getInstance(Context context) {
 		if (instance == null) {
@@ -68,50 +70,50 @@ public class TatansSpeaker {
 		public void onInit(int code) {
 			if (code != ErrorCode.SUCCESS) {
 				Log.e(TAG, "初始化失败,错误码："+code);
-        	} else {
+			} else {
 				// 初始化成功，之后可以调用startSpeaking方法
-        		// 注：有的开发者在onCreate方法中创建完合成对象之后马上就调用startSpeaking进行合成，
-        		// 正确的做法是将onCreate中的startSpeaking调用移至这里
-			}		
+				// 注：有的开发者在onCreate方法中创建完合成对象之后马上就调用startSpeaking进行合成，
+				// 正确的做法是将onCreate中的startSpeaking调用移至这里
+			}
 		}
 	};
 	/**
 	 * 合成回调监听。
 	 */
 	private SynthesizerListener mTtsListener = new SynthesizerListener() {
-		
+
 		@Override
 		public void onSpeakBegin() {
-			Log.d(TAG,"开始播放");
+			Log.d(TAG,"onSpeakBegin");
 			mSpeakerCallback.onSpeakBegin();
 		}
 
 		@Override
 		public void onSpeakPaused() {
-			Log.d(TAG,"暂停播放");
+	//		Log.d(TAG,"onSpeakPaused");
 			mSpeakerCallback.onSpeakPaused();
 		}
 
 		@Override
 		public void onSpeakResumed() {
-			Log.d(TAG,"继续播放");
+		//	Log.d(TAG,"onSpeakResumed");
 			mSpeakerCallback.onSpeakResumed();
 		}
 
 		@Override
 		public void onBufferProgress(int percent, int beginPos, int endPos,
-				String info) {
+									 String info) {
 			// 合成进度
 			mPercentForBuffering = percent;
-		//	Log.i(TAG,"BufferPro缓冲进度为"+mPercentForBuffering+"，播放进度为"+mPercentForPlaying+"info:"+info);
+			//	Log.i(TAG,"BufferPro缓冲进度为"+mPercentForBuffering+"，播放进度为"+mPercentForPlaying+"info:"+info);
 		}
 
 		@Override
 		public void onSpeakProgress(int percent, int beginPos, int endPos) {
 			// 播放进度
 			mPercentForPlaying = percent;
-			Log.d(TAG,"SpeakPro缓冲进度为"+mPercentForBuffering+"，播放进度为"+mPercentForPlaying);
-			Log.d(TAG,"开始节点:"+beginPos+"，结束节点:"+endPos);
+			/*Log.d(TAG,"SpeakPro缓冲进度为"+mPercentForBuffering+"，播放进度为"+mPercentForPlaying);
+			Log.d(TAG,"开始节点:"+beginPos+"，结束节点:"+endPos);*/
 			mSpeakerCallback.onSpeakProgress(percent, beginPos, endPos);
 		}
 
@@ -119,7 +121,7 @@ public class TatansSpeaker {
 		public void onCompleted(SpeechError error) {
 			if (error == null) {
 				mSpeakerCallback.onCompleted();
-				Log.d(TAG,"播放完成");
+				Log.d(TAG,"onCompleted");
 			} else if (error != null) {
 				mSpeakerCallback.onCompletedError();
 				Log.d(TAG,error.getPlainDescription(true));
@@ -141,7 +143,6 @@ public class TatansSpeaker {
 				+ "54013ebb");
 		mTts = SpeechSynthesizer.createSynthesizer(mContext, mTtsInitListener);
 		mSharedPreferences = mContext.getSharedPreferences(PREFER_NAME, Context.MODE_PRIVATE);
-		Log.d(TAG, "Initspeed:"+mTts.getParameter(SpeechConstant.SPEED));
 		// TODO Auto-generated constructor stub
 		//mInstaller = new ApkInstaller((Activity)mContext);
 		if (!SpeechUtility.getUtility().checkServiceInstalled()) {
@@ -152,30 +153,30 @@ public class TatansSpeaker {
 	/**
 	 * 参数设置
 	 * @param
-	 * @return 
+	 * @return
 	 */
 	private void setParam(){
 		// 清空参数
 		mTts.setParameter(SpeechConstant.PARAMS, null);
 		// 根据合成引擎设置相应参数
 		mTts.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_LOCAL);
-			// 设置本地合成发音人 voicer为空，默认通过语记界面指定发音人。
+		// 设置本地合成发音人 voicer为空，默认通过语记界面指定发音人。
 		mTts.setParameter(SpeechConstant.VOICE_NAME, "");
-			/**
-			 * TODO 本地合成不设置语速、音调、音量，默认使用语记设置
-			 * 开发者如需自定义参数，请参考在线合成参数设置
-			 */
+		/**
+		 * TODO 本地合成不设置语速、音调、音量，默认使用语记设置
+		 * 开发者如需自定义参数，请参考在线合成参数设置
+		 */
 		//设置播放器音频流类型
 		mTts.setParameter(SpeechConstant.STREAM_TYPE, mSharedPreferences.getString("stream_preference", "3"));
 		// 设置播放合成音频打断音乐播放，默认为true
 		mTts.setParameter(SpeechConstant.KEY_REQUEST_FOCUS, "true");
-		
+
 		// 设置音频保存路径，保存音频格式支持pcm、wav，设置路径为sd卡请注意WRITE_EXTERNAL_STORAGE权限
 		// 注：AUDIO_FORMAT参数语记需要更新版本才能生效
 		//mTts.setParameter(SpeechConstant.AUDIO_FORMAT, "wav");
 		//mTts.setParameter(SpeechConstant.TTS_AUDIO_PATH, Environment.getExternalStorageDirectory()+"/msc/tts.wav");
 	}
-	
+
 	public void speech(String str){
 		speech(str,null);
 	}
@@ -183,15 +184,20 @@ public class TatansSpeaker {
 		speech(str,speed,null);
 	}
 	public void speech(String str,int speed,TatansSpeakerCallback speakerCallback){
+		bIsPause=false;
 		setParam();
 		//FlowerCollector.onEvent((Activity)mContext, "tts_play");
 		if(speakerCallback==null){
 			mTtsListener=null;
 		}
 		speed(speed);
+		/*if(!bIsAudioFocus){
+			Log.d(TAG, "音频焦点2:"+bIsAudioFocus);
+			mTts.setParameter(SpeechConstant.KEY_REQUEST_FOCUS,String.valueOf(bIsAudioFocus));
+		}*/
 		mSpeakerCallback = speakerCallback;
 		int code = mTts.startSpeaking(str, mTtsListener);
-//		/** 
+//		/**
 //		 * 只保存音频不进行播放接口,调用此接口请注释startSpeaking接口
 //		 * text:要合成的文本，uri:需要保存的音频全路径，listener:回调接口
 //		*/
@@ -203,7 +209,7 @@ public class TatansSpeaker {
 				//未安装则跳转到提示安装页面
 				//mInstaller.install();
 			}else {
-				Log.d(TAG,"语音合成失败,错误码: " + code);	
+				Log.d(TAG,"语音合成失败,错误码: " + code);
 			}
 		}
 	}
@@ -212,21 +218,34 @@ public class TatansSpeaker {
 	}
 	public void stop(){
 		Log.d(TAG, "stop！");
+		bIsPause=false;
 		mTts.stopSpeaking();
 	}
 	public void pause(){
 		Log.d(TAG, "pause！");
+		bIsPause=true;
 		mTts.pauseSpeaking();
 	}
 	public void resume(){
 		Log.d(TAG, "resume！");
+		bIsPause=false;
 		mTts.resumeSpeaking();
 	}
 	public void speed(int speed){
 		Log.d(TAG, "现在语速:"+mTts.getParameter(SpeechConstant.SPEED));
 		mTts.setParameter(SpeechConstant.SPEED,String.valueOf(speed));
 	}
+	public void setAudioFoucus(Boolean flag){
+		Log.d(TAG, "音频焦点:"+flag);
+		bIsAudioFocus=flag;
+	}
 	public void destroy(){
 		mTts.destroy();
+	}
+	public boolean isStop(){
+		return mTts.isSpeaking();
+	}
+	public boolean isPause(){
+		return bIsPause;
 	}
 }

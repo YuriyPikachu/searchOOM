@@ -4,7 +4,7 @@ dependencies {
   debugCompile project(':SearchOOM-android')
   releaseCompile project(':SearchOOM-no')
   compile project(':coeus-network')
-  compile project(':mylibrary')
+ /* compile project(':mylibrary')*/
 }
 
 android {
@@ -17,7 +17,7 @@ android {
   }
 
   defaultConfig {
-    applicationId "com.example.leakcanary"
+    applicationId "com.example.sample"
     minSdkVersion rootProject.ext.minSdkVersion
     targetSdkVersion rootProject.ext.compileSdkVersion
 

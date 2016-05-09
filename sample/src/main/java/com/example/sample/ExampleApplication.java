@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.leakcanary;
+package com.example.sample;
 
 import android.app.Application;
 import android.os.StrictMode;
@@ -28,8 +28,9 @@ public class ExampleApplication extends TatansApplication {
 
   @Override public void onCreate() {
     super.onCreate();
-    enabledStrictMode();
-    TatansSearchOOM.install(this);
+
+    //enabledStrictMode();
+    //TatansSearchOOM.install(this);
   }
 
   private void enabledStrictMode() {

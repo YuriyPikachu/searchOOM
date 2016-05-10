@@ -1,3 +1,4 @@
+/*
 package net.tatans.coeus.network.view;
 
 import net.tatans.coeus.network.imp.ISendChar;
@@ -7,9 +8,11 @@ import android.view.accessibility.AccessibilityEvent;
 import android.widget.TextView;
 
 
+*/
 /**
- * Created by SiLiPing on 2015/12/23.
- */
+ * @deprecated Use the new {@link }
+ *//*
+
 public class NewTextView extends TextView {
 
     private String TAG = "NewTextView";
@@ -20,11 +23,13 @@ public class NewTextView extends TextView {
         this.iSendChar = iSendChar;
     }
 
-    /**
+    */
+/**
      * (API级别4)当用户在一个视图操作时调用此方法。事件是按照用户操作类型分类,如TYPE_VIEW_CLICKED。
      * 你通常不需要实现该方法,除非你是创建一个自定义视图。
      * @param eventType
-     */
+     *//*
+
     @SuppressLint("NewApi")
 	@Override
     public void sendAccessibilityEvent(int eventType) {
@@ -34,3 +39,4 @@ public class NewTextView extends TextView {
         }
     }
 }
+*/

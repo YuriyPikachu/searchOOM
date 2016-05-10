@@ -75,10 +75,10 @@ public class HttpTool {
 	public void getTicketCall(Context context,String url, getTicketCallBackInterface callBack) throws JSONException {
 		AccountManager mAccountManager;
 		mAccountManager = AccountManager.get(context);
-		Account[] accounts = mAccountManager.getAccountsByType(Constants.ACCOUNT_TYPE);
+	//	Account[] accounts = mAccountManager.getAccountsByType(Constants.ACCOUNT_TYPE);
 		String strTGT = null;
 		try {
-			 strTGT = mAccountManager.getPassword(accounts[0]);
+	//		 strTGT = mAccountManager.getPassword(accounts[0]);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.d("NetWork", "HttpTool->---:"+e.toString());

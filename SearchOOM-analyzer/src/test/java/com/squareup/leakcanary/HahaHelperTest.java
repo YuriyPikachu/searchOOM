@@ -1,3 +1,4 @@
+/*
 package com.squareup.leakcanary;
 
 import com.squareup.haha.perflib.ArrayInstance;
@@ -144,3 +145,4 @@ public class HahaHelperTest {
     return stringInstance;
   }
 }
+*/

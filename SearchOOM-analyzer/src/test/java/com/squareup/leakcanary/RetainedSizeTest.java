@@ -1,3 +1,4 @@
+/*
 package com.squareup.leakcanary;
 
 import java.lang.ref.WeakReference;
@@ -16,9 +17,11 @@ import static com.squareup.leakcanary.TestUtil.HeapDumpFile.SERVICE_BINDER_IGNOR
 import static com.squareup.leakcanary.TestUtil.analyze;
 import static org.junit.Assert.assertEquals;
 
+*/
 /**
  * This test makes sure there is no regression on the retained size calculation.
- */
+ *//*
+
 @RunWith(Parameterized.class) //
 public class RetainedSizeTest {
 
@@ -53,3 +56,4 @@ public class RetainedSizeTest {
     assertEquals(expectedRetainedHeapSize, result.retainedHeapSize);
   }
 }
+*/

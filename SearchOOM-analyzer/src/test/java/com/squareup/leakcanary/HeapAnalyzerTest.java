@@ -1,3 +1,4 @@
+/*
 package com.squareup.leakcanary;
 
 import com.squareup.haha.perflib.RootObj;
@@ -59,3 +60,4 @@ public class HeapAnalyzerTest {
     return snapshot;
   }
 }
+*/

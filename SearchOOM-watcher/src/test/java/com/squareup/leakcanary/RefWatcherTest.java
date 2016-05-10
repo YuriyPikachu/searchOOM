@@ -12,8 +12,16 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package com.squareup.leakcanary;
+
+import net.tatans.coeus.SearchOOM.DebuggerControl;
+import net.tatans.coeus.SearchOOM.ExcludedRefs;
+import net.tatans.coeus.SearchOOM.GcTrigger;
+import net.tatans.coeus.SearchOOM.HeapDump;
+import net.tatans.coeus.SearchOOM.HeapDumper;
+import net.tatans.coeus.SearchOOM.RefWatcher;
 
 import java.io.File;
 import java.util.concurrent.Executor;
@@ -50,10 +58,12 @@ public class RefWatcherTest {
     }
   }
 
-  /**
+  */
+/**
    * In theory, this test doesn't have a 100% chance of success. In practice, {@link
    * GcTrigger#DEFAULT} is good enough.
-   */
+   *//*
+
   @Test public void unreachableObject_noDump() {
     TestDumper dumper = new TestDumper();
     TestExecutor executor = new TestExecutor();
@@ -78,3 +88,4 @@ public class RefWatcherTest {
         new TestListener(), NO_REF);
   }
 }
+*/

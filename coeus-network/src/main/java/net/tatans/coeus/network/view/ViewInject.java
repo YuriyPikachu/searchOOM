@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 /**
- * @deprecated Use the new {@link TatansCrashHandle}
+ * @deprecated Use the new {@link BaseActivity}
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

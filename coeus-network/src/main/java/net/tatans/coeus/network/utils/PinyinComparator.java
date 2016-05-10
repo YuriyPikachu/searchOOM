@@ -1,11 +1,14 @@
+/*
 package net.tatans.coeus.network.utils;
 
 import java.util.Comparator;
 
+*/
 /**
  * Created by SiLiPing on 2015/12/23.
  * ≈≈–Ú∑Ω∞∏
- */
+ *//*
+
 public class PinyinComparator implements Comparator<Person> {
 
 	public int compare(Person o1, Person o2) {
@@ -20,3 +23,4 @@ public class PinyinComparator implements Comparator<Person> {
 		}
 	}
 }
+*/

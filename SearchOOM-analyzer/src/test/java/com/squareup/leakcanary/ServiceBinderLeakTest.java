@@ -12,7 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package com.squareup.leakcanary;
 
 import java.lang.ref.WeakReference;
@@ -30,10 +31,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+*/
 /**
  * leak_service_binder_ignored.hprof contains a "normal" leak when binding to a service, where
  * leak_service_binder.hprof contains a leak where a binder is leaked by a static field.
- */
+ *//*
+
 public class ServiceBinderLeakTest {
 
   ExcludedRefs.BuilderWithParams excludedRefs;
@@ -79,3 +82,4 @@ public class ServiceBinderLeakTest {
     assertFalse(result.leakFound);
   }
 }
+*/

@@ -13,7 +13,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsListView;
 /**
  *  @author 余亮 <br/> 
- *  注入式Activity <br/> 
+ *  注入式Activity <br/>
+ *  @deprecated Use the new {@link BaseActivity}
  *  <br/> 2015-4-15 
  */
 public abstract class TatansActivity extends Activity {
@@ -56,7 +57,7 @@ public abstract class TatansActivity extends Activity {
 						
 						int viewId = viewInject.id();
 					    field.set(injectedSource,sourceView.findViewById(viewId));
-					
+
 					    setListener(injectedSource,field,viewInject.click(),Method.Click);
 						setListener(injectedSource,field,viewInject.longClick(),Method.LongClick);
 						setListener(injectedSource,field,viewInject.itemClick(),Method.ItemClick);
@@ -87,7 +88,7 @@ public abstract class TatansActivity extends Activity {
 	private static void setListener(Object injectedSource,Field field,String methodName,Method method)throws Exception{
 		if(methodName == null || methodName.trim().length() == 0)
 			return;
-		
+
 		Object obj = field.get(injectedSource);
 		
 		switch (method) {

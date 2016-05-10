@@ -8,7 +8,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
-
+/**
+ *
+ */
 public class EventListener implements OnClickListener, OnLongClickListener, OnItemClickListener, OnItemSelectedListener,OnItemLongClickListener {
 
 	private Object handler;
@@ -173,7 +175,6 @@ public class EventListener implements OnClickListener, OnLongClickListener, OnIt
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 	

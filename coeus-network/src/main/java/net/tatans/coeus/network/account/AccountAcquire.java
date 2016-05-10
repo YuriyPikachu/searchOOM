@@ -1,3 +1,4 @@
+/*
 package net.tatans.coeus.network.account;
 
 
@@ -8,11 +9,13 @@ import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
+*/
 /**
  * @author Yuliang 
  * @time 2014-11-21 
  * @version 1.0
- */
+ *//*
+
 @SuppressLint("NewApi")
 public class AccountAcquire {
 	private AccountManager mAccountManager;
@@ -31,7 +34,7 @@ public class AccountAcquire {
 			try {
 				strUser = mAccountManager.getUserData(accounts[0], sUser);
 			} catch (Exception e) {
-				TatansToast.showAndCancel("请从官方正常渠道下载该应用");
+				TatansToast.showAndCancel("???????????????????");
 				try {
 					Thread.sleep(3000);
 				} catch (InterruptedException e1) {
@@ -45,3 +48,4 @@ public class AccountAcquire {
 	}
 	
 }
+*/

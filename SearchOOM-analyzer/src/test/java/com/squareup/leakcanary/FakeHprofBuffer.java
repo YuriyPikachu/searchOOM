@@ -1,3 +1,4 @@
+/*
 package com.squareup.leakcanary;
 
 import com.squareup.haha.perflib.io.HprofBuffer;
@@ -99,3 +100,4 @@ public final class FakeHprofBuffer implements HprofBuffer {
     throw new UnsupportedOperationException("no bytes to read");
   }
 }
+*/

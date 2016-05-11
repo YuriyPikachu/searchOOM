@@ -5,12 +5,10 @@ import android.app.Activity;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
-import android.view.View;
 
 
 import net.tatans.coeus.network.tools.TatansLogUtils;
 import net.tatans.rhea.network.event.EventBase;
-import net.tatans.rhea.network.view.ViewFinder;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Array;
@@ -22,7 +20,7 @@ public class TatansIoc {
     private TatansIoc() {
     }
 
-    public static void inject(View view) {
+    public static void inject(android.view.View view) {
         injectObject(view, new ViewFinder(view));
     }
 
@@ -34,7 +32,7 @@ public class TatansIoc {
         injectObject(preferenceActivity, new ViewFinder(preferenceActivity));
     }
 
-    public static void inject(Object handler, View view) {
+    public static void inject(Object handler, android.view.View view) {
         injectObject(handler, new ViewFinder(view));
     }
 
@@ -70,10 +68,10 @@ public class TatansIoc {
         Field[] fields = handlerType.getDeclaredFields();
         if (fields != null && fields.length > 0) {
             for (Field field : fields) {
-                ViewInjectIoc viewInject = field.getAnnotation(ViewInjectIoc.class);
-                if (viewInject != null) {
+                ViewIoc viewIocInject = field.getAnnotation(ViewIoc.class);
+                if (viewIocInject != null) {
                     try {
-                        View view = finder.findViewById(viewInject.value(), viewInject.parentId());
+                        android.view.View view = finder.findViewById(viewIocInject.value(), viewIocInject.parentId());
                         if (view != null) {
                             field.setAccessible(true);
                             field.set(handler, view);

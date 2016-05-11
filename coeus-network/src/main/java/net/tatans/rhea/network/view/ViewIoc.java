@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ViewInjectIoc {
+public @interface ViewIoc {
 
     int value();
 

@@ -26,7 +26,7 @@ import java.lang.annotation.Target;
  * Created by Yuriy on 16-04-30.
  *   返回类型 boolean
  *   @return True if the listener has consumed the event, false otherwise.
- * 传入的参数 View v, MotionEvent event
+ * 传入的参数 ViewIoc v, MotionEvent event
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

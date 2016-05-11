@@ -16,7 +16,7 @@
 
 package net.tatans.rhea.network.event;
 
-import android.view.View;
+import android.view.ViewIoc;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -27,13 +27,13 @@ import java.lang.annotation.Target;
 /**
  * Created by Yuriy on 16-04-30.
  * * 返回类型 void
- * 传入的参数 View v
+ * 传入的参数 ViewIoc v
  *//*
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @EventBase(
-        listenerType = View.AccessibilityDelegate.class,
+        listenerType = ViewIoc.AccessibilityDelegate.class,
         listenerSetter = "setAccessibilityDelegate",
         methodName = "onInitializeAccessibilityEvent")
 public @interface OnInitializeAccessibility {

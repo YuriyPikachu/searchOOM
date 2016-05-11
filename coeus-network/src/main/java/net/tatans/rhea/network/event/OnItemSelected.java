@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 /**
  * Created by Yuriy on 16-04-30.
  *  返回类型 void
- * 传入的参数 AdapterView<?> parent, View view, int position, long id
+ * 传入的参数 AdapterView<?> parent, ViewIoc view, int position, long id
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

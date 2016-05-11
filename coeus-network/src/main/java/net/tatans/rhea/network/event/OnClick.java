@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
 /**
  * Created by Yuriy on 16-04-30.
  * 返回类型 void
- * 传入的参数 View v
+ * 传入的参数 ViewIoc v
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

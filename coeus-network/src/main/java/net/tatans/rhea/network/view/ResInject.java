@@ -26,5 +26,5 @@ import java.lang.annotation.Target;
 public @interface ResInject {
     int id();
 
-    ResType type();
+    ResType type() default ResType.String;
 }

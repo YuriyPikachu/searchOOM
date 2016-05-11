@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
 
 /**
  * Created by Yuriy on 16-04-30.
- * 传入的参数 View v
+ * 传入的参数 ViewIoc v
  *  返回类型 boolean 默认 false
  * @return true if the callback consumed the long click, false otherwise.
  */

@@ -26,7 +26,7 @@ import java.lang.annotation.Target;
  * Created by Yuriy on 16-04-30.
  *  返回类型 boolean
  *  @return True if the click was handled
- * 传入的参数 ExpandableListView parent, View v, int groupPosition,long id
+ * 传入的参数 ExpandableListView parent, ViewIoc v, int groupPosition,long id
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

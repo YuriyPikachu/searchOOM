@@ -411,7 +411,7 @@ public class AuthenticatorActivity extends Activity {
 
 
 	@SuppressLint("NewApi")
-	public void onLoginClick(View view) {
+	public void onLoginClick(ViewIoc view) {
 		// TODO Auto-generated method stub
 		if (mRequestNewAccount) {
 			mUsername = mUsernameEdit.getText().toString();

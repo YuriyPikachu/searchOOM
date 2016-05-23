@@ -10,7 +10,7 @@ import net.tatans.rhea.network.view.TatansIoc;
  * classes : net.tatans.coeus.network.tools.BaseActivity
  * yulia create at 2016/5/10 10:47
  */
-public class BaseActivity extends Activity{
+public class BaseActivity extends StartActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

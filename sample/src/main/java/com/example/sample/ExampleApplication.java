@@ -17,18 +17,21 @@ package com.example.sample;
 
 import android.app.Application;
 import android.os.StrictMode;
+import android.telephony.TelephonyManager;
 
 import net.tatans.coeus.SearchOOM.TatansSearchOOM;
 import net.tatans.coeus.network.tools.TatansApplication;
+import net.tatans.coeus.network.tools.TatansPreferences;
 
 import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.GINGERBREAD;
 
 public class ExampleApplication extends TatansApplication {
-
+  String Imei;
   @Override public void onCreate() {
     super.onCreate();
-
+    Imei = ((TelephonyManager) getSystemService(TELEPHONY_SERVICE))
+            .getDeviceId();
     //enabledStrictMode();
     //TatansSearchOOM.install(this);
   }

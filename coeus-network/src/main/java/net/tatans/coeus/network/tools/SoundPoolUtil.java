@@ -18,7 +18,6 @@ import android.media.SoundPool.OnLoadCompleteListener;
 import android.util.Log;
 
 /**
- * @author wmt
  */
 public class SoundPoolUtil implements Runnable {
 	private boolean flag = false;

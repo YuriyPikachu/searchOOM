@@ -196,6 +196,52 @@ public class TatansCache {
 				remove(key);
 		}
 	}
+	/**
+	 * 判断缓存文件是否过期
+	 *
+	 * @param key
+	 * @return String 数据
+	 */
+	public boolean isCacheDue(String key){
+		File file = mCache.get(key);
+		if (!file.exists())
+			return true;
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader(file));
+			String readString = "";
+			String currentLine;
+			while ((currentLine = in.readLine()) != null) {
+				readString += currentLine;
+			}
+			return Utils.isDue(readString);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return true;
+		} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	/**
+	 * 判断缓存文件是否存在
+	 *
+	 * @param key
+	 * @return String 数据
+	 */
+	public boolean isCacheExist(String key){
+		File file = mCache.get(key);
+		if (!file.exists()){
+			return false;
+		}else {
+			return true;
+		}
+	}
 
 	// =======================================
 	// ============= JSONObject 数据 读写 ==============
@@ -342,7 +388,7 @@ public class TatansCache {
 	 * @throws FileNotFoundException
 	 *             if the file can not be opened
 	 */
-	public InputStream get1(String key) throws FileNotFoundException {
+	public InputStream getStream(String key) throws FileNotFoundException {
 		File file = mCache.get(key);
 		if (!file.exists())
 			return null;

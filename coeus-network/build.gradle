@@ -37,9 +37,13 @@ android {
     }
     buildTypes{
         debug{
+        /*    minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'consumer-proguard-rules.pro'*/
             buildConfigField "boolean", "LEO_DEBUG", "false"
         }
         release{
+      /*      minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'consumer-proguard-rules.pro'*/
             buildConfigField "boolean", "LEO_DEBUG", "true"
         }
     }

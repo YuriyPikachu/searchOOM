@@ -197,6 +197,41 @@ public class TatansCache {
 		}
 	}
 	/**
+	 * 读取 String数据,但是不会删除过期
+	 *
+	 * @param key
+	 * @return String 数据
+	 */
+	public String getAsStringNotDelete(String key) {
+		File file = mCache.get(key);
+		if (!file.exists())
+			return null;
+		boolean removeFile = false;
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader(file));
+			String readString = "";
+			String currentLine;
+			while ((currentLine = in.readLine()) != null) {
+				readString += currentLine;
+			}
+			return Utils.clearDateInfo(readString);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+	}
+	/**
 	 * 判断缓存文件是否过期
 	 *
 	 * @param key

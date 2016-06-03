@@ -17,7 +17,7 @@ import android.widget.AbsListView;
  *  @deprecated Use the new {@link BaseActivity}
  *  <br/> 2015-4-15 
  */
-public abstract class TatansActivity extends Activity {
+public abstract class TatansActivity extends StartActivity {
 
 	public void setContentView(int layoutResID) {
 		super.setContentView(layoutResID);

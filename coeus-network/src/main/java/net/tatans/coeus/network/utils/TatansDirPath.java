@@ -8,9 +8,9 @@ public class TatansDirPath {
 	/**
 	 * 获取或创建Cache目录
 	 * 
-	 * @param bucket
+	 * @param sDir
 	 *         文件保存路径
-	 * @param 
+	 * @param  apkName
 	 * 		保存文件的名字
 	 */			
 	public static String getMyCacheDir(String sDir,String apkName) {
@@ -39,7 +39,35 @@ public class TatansDirPath {
 		}
 		return dir+apkName;
 	}
-	
+	/**
+	 * 获取或创建Cache目录
+	 *
+	 * @param sDir
+	 *         文件保存路径
+	 */
+	public static String getMyCacheDir(String sDir) {
+		String dir;
+
+		// 保证目录名称正确
+		if (sDir != null) {
+			if (!sDir.equals("")) {
+				if (!sDir.endsWith("/")) {
+					sDir = sDir + "/";
+				}
+			}
+		}
+		if (isSDCardExist()) {
+			dir = Environment.getExternalStorageDirectory().toString()  + "/"+sDir;
+		} else {
+			dir = Environment.getDownloadCacheDirectory().toString()  + "/"+sDir;
+		}
+
+		File f = new File(dir);
+		if (!f.exists()) {
+			f.mkdirs();
+		}
+		return dir;
+	}
 	public static boolean isSDCardExist() {
 		if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
 			return false;

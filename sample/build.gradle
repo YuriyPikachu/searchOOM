@@ -15,7 +15,15 @@ android {
     sourceCompatibility rootProject.ext.javaVersion
     targetCompatibility rootProject.ext.javaVersion
   }
-
+  signingConfigs {
+    releaseConfig {
+      //HYPERION or TCL2C or H508
+      keyPassword H508_KEY_PASSWORD
+      keyAlias H508_KEY_ALIAS
+      storePassword H508_STORE_PASSWORD
+      storeFile file(H508_STORE_FILE)
+    }
+  }
   defaultConfig {
     applicationId "com.example.sample"
     minSdkVersion rootProject.ext.minSdkVersion
@@ -26,6 +34,11 @@ android {
   }
 
   buildTypes {
-    debug
+    release {
+     // signingConfig signingConfigs.releaseConfig
+    }
+    debug {
+    //  signingConfig signingConfigs.releaseConfig
+    }
   }
 }

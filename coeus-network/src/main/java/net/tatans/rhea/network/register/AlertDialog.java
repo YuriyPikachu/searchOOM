@@ -45,7 +45,7 @@ public class AlertDialog {
         messageView.setText(message);
     }
 
-    private int recLen = 5;
+    private int recLen = 2;
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override

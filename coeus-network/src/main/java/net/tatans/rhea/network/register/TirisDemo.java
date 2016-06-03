@@ -15,9 +15,9 @@ public class TirisDemo {
 
     public TirisDemo(Context context) {
         alertDialog = new AlertDialog(context);
-        alertDialog.setTitle("娉ㄥ唽鎻愮ず");
-        alertDialog.setMessage("璇疯繛鎺ョ綉缁滃悗鍦ㄧ嚎娉ㄥ唽");
-        alertDialog.setPositiveButton("鍦ㄧ嚎娉ㄥ唽", new View.OnClickListener() {
+        alertDialog.setTitle("注册提示");
+        alertDialog.setMessage("请连接网络后在线注册,或者拨打电话给天坦客服:4007778878");
+        alertDialog.setPositiveButton("在线注册", new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

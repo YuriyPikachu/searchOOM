@@ -2,11 +2,7 @@ package net.tatans.rhea.network.register;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.telephony.TelephonyManager;
-import android.text.TextUtils;
 import android.util.Log;
 
 import net.tatans.coeus.network.callback.HttpRequestCallBack;
@@ -18,9 +14,6 @@ import net.tatans.coeus.network.tools.TatansToast;
 import net.tatans.coeus.network.utils.TatansDirPath;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by SiLiPing on 2016/5/25.
@@ -37,16 +30,14 @@ public class RegCertificateUtil {
 
     public RegCertificateUtil(Activity ctx) {
         this.mCtx = ctx;
-        if ((ctx.getIntent().getAction()).endsWith(".MAIN"))
+        if (("android.intent.action.MAIN").equals(ctx.getIntent().getAction()))
             initCertificate();
     }
 
     private void initCertificate(){
-        tatansCache = TatansCache.get(new File(TatansDirPath.getMyCacheDir("reg","ctr")).getPath());
-        /*
-        Log.d("imeiStr","imei："+imei);
-        */
+        tatansCache = TatansCache.get(new File(TatansDirPath.getMyCacheDir(".systemtt")));
         boolean ctrFlag = tatansCache.isCacheExist(key);/**判断key是否存在*/
+        Log.e("certificate","isExist:"+ctrFlag);
         if (ctrFlag){
              String ctrStr = tatansCache.getAsStringNotDelete(key);
             /**凭证真伪*/
@@ -75,12 +66,14 @@ public class RegCertificateUtil {
         if (NetworkUtil.isNetwork()){
             fh = new TatansHttp();
             /**网络请求验证*/
-            final String imei = getImei();//**String 获取IMEI*//*
-            sign = getSignature();
+            final String imei = getImei().trim();//**String 获取IMEI*//*
+            sign = (TatansApp.getSignature()).trim();
             HttpRequestParams paramss = new HttpRequestParams();
+            /*Log.e("certificate","sign："+sign);
+            Log.e("certificate","imei："+imei);*/
             paramss.put("sign", sign);
             paramss.put("imei", imei);
-            fh.get(url,paramss, new HttpRequestCallBack<String>() {
+            fh.post(url,paramss, new HttpRequestCallBack<String>() {
 
                 @Override
                 public void onFailure(Throwable t, String strMsg) {
@@ -101,7 +94,7 @@ public class RegCertificateUtil {
                             TatansToast.showAndCancel("在线验证失败");
                             Log.e("certificate","在线验证失败");
                         }else{
-                            tatansCache.put(key,getCertificate(imei));
+                            tatansCache.put(key,getCertificate(imei),TatansCache.TIME_MONTH);
                             Log.e("certificate","在线验证通过");
                         }
                     } catch (Exception e) {
@@ -142,66 +135,10 @@ public class RegCertificateUtil {
                 getTestService(true);
                 TatansToast.showAndCancel("在线注册");
             }
-
             @Override
             public void onContinue() {
                 TatansToast.showAndCancel("继续使用");
             }
         });
-    }
-
-    /**
-     * 获取应用签名
-     * @return
-     */
-    private PackageManager manager;
-    private PackageInfo packageInfo;
-    private Signature[] signatures;
-    private StringBuilder builder;
-    private String signature;
-    public String getSignature() {
-        manager = mCtx.getPackageManager();
-        builder = new StringBuilder();
-        String pkgname = getAppInfo();
-        boolean isEmpty = TextUtils.isEmpty(pkgname);
-        if (isEmpty) {
-            TatansToast.showAndCancel("应用程序的包名不能为空！");
-        } else {
-            try {
-                /** 通过包管理器获得指定包名包含签名的包信息 **/
-                packageInfo = manager.getPackageInfo(pkgname, PackageManager.GET_SIGNATURES);
-                /******* 通过返回的包信息获得签名数组 *******/
-                signatures = packageInfo.signatures;
-                /******* 循环遍历签名数组拼接应用签名 *******/
-                for (Signature signature : signatures) {
-                    builder.append(signature.toCharsString());
-                }
-                /************** 得到应用签名 **************/
-                signature = builder.toString();
-                Log.d("signature","signature："+signature);
-                return signature;
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
-
-    /**
-     * 获取应用包名
-     * @return
-     */
-    private String getAppInfo() {
-        try {
-            String pkName = mCtx.getPackageName();
-            String versionName = mCtx.getPackageManager().getPackageInfo(
-                    pkName, 0).versionName;
-            int versionCode = mCtx.getPackageManager().getPackageInfo(pkName, 0).versionCode;
-            Log.d("signature","getAppInfo："+pkName + "   " + versionName + "  " + versionCode);
-            return pkName;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

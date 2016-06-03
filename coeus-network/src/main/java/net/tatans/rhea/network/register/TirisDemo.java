@@ -15,8 +15,8 @@ public class TirisDemo {
 
     public TirisDemo(Context context) {
         alertDialog = new AlertDialog(context);
-        alertDialog.setTitle("注册提示");
-        alertDialog.setMessage("请连接网络后在线注册,或者拨打电话给天坦客服:4007778878");
+        alertDialog.setTitle("提示");
+        alertDialog.setMessage("请在联网状态下注册。出现问题请拨打客服电话：4007778878");
         alertDialog.setPositiveButton("在线注册", new View.OnClickListener() {
 
             @Override

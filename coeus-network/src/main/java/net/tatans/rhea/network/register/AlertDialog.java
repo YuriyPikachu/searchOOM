@@ -54,12 +54,12 @@ public class AlertDialog {
             if (recLen<=0){
                 handler.removeCallbacks(runnable);
                 button_confirm.setEnabled(true);
-                button_confirm.setText("在线注册");
-                button_confirm.setContentDescription("在线注册");
+                button_confirm.setText("重新注册");
+                button_confirm.setContentDescription("重新注册");
                 button_confirm.setBackgroundResource(R.drawable.fillet_btn_black);
             }else{
-                button_confirm.setText("在线注册("+ recLen +")");
-                button_confirm.setContentDescription("在线注册"+ recLen +"秒后可用");
+                button_confirm.setText("重新注册("+ recLen +")");
+                button_confirm.setContentDescription("重新注册"+ recLen +"秒后可用");
             }
             handler.postDelayed(this, 1000);
         }

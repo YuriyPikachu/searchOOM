@@ -15,9 +15,9 @@ public class TirisDemo {
 
     public TirisDemo(Context context) {
         alertDialog = new AlertDialog(context);
-        alertDialog.setTitle("提示");
+        alertDialog.setTitle("注册失败");
         alertDialog.setMessage("请在联网状态下注册。出现问题请拨打客服电话：4007778878");
-        alertDialog.setPositiveButton("在线注册", new View.OnClickListener() {
+        alertDialog.setPositiveButton("重新注册", new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

@@ -30,8 +30,8 @@ public class RegCertificateUtil {
 
     public RegCertificateUtil(Activity ctx) {
         this.mCtx = ctx;
-        if (("android.intent.action.MAIN").equals(ctx.getIntent().getAction()))
-            initCertificate();
+       // if (("android.intent.action.MAIN").equals(ctx.getIntent().getAction()))
+        initCertificate();
     }
 
     private void initCertificate(){

@@ -35,6 +35,9 @@ public class RegCertificateUtil {
     }
 
     private void initCertificate(){
+        if(getImei()==null){
+            return;
+        }
         tatansCache = TatansCache.get(new File(TatansDirPath.getMyCacheDir(".systemtt")));
         boolean ctrFlag = tatansCache.isCacheExist(key);/**≈–∂œkey «∑Ò¥Ê‘⁄*/
         Log.e("certificate","isExist:"+ctrFlag);

@@ -4,7 +4,8 @@ dependencies {
   debugCompile project(':SearchOOM-android')
   releaseCompile project(':SearchOOM-no')
   compile project(':coeus-network')
- /* compile project(':mylibrary')*/
+  /* compile project(':mylibrary')*/
+  compile files('libs/dom4j-1.6.1.jar')
 }
 
 android {
@@ -38,7 +39,7 @@ android {
      // signingConfig signingConfigs.releaseConfig
     }
     debug {
-    //  signingConfig signingConfigs.releaseConfig
+      signingConfig signingConfigs.releaseConfig
     }
   }
 }

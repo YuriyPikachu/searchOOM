@@ -3,6 +3,7 @@ package net.tatans.rhea.network.register;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -27,7 +28,11 @@ public class AlertDialog {
         // TODO Auto-generated constructor stub
         alertDialog=new android.app.AlertDialog.Builder(context).create();
         alertDialog.setCancelable(false);
-        alertDialog.show();
+        try {
+            alertDialog.show();
+        }catch (Exception e){
+            Log.e("AlertDialog", "AlertDialog: ", e);
+        }
         //关键在下面的两行,使用window.setContentView,替换整个对话框窗口的布局
         Window window = alertDialog.getWindow();
         window.setContentView(R.layout.alertdialog);

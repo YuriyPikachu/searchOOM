@@ -18,7 +18,7 @@ import android.util.Log;
 
 /**
  * @title 根据 图片url地址下载图片 可以是本地和网络
- * @author 杨福海（michael） www.yangfuhai.com
+ * @author Yuriy（michael） www.yangfuhai.com
  */
 public class SimpleDownloader implements Downloader {
 
